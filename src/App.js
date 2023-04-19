@@ -2,6 +2,7 @@ import "./App.scss";
 import { ThemeProvider, Typography, createTheme } from "@mui/material";
 import Input from "./components/Input/Input";
 import Lists from "./components/Lists/Lists";
+import Footer from "./components/Footer/Footer";
 
 const theme = createTheme({
   palette: {
@@ -44,17 +45,20 @@ const theme = createTheme({
 });
 function App() {
   return (
-    <div className="App">
-      <ThemeProvider theme={theme}>
-        <div className="content">
-          <Typography className="title" variant="h5">
-            website todo
-          </Typography>
-          <Lists />
-        </div>
-        <Input />
-      </ThemeProvider>
-    </div>
+    <>
+      <div className="App">
+        <ThemeProvider theme={theme}>
+          <div className="content">
+            <Typography className="title" variant="h5">
+              website todo
+            </Typography>
+            <Lists />
+          </div>
+          <Input />
+        </ThemeProvider>
+      </div>
+      <Footer />
+    </>
   );
 }
 
