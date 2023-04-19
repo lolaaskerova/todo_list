@@ -12,10 +12,6 @@ const theme = createTheme({
       main: "#fff",
     },
   },
-  textField: {
-    fontSize: "30px",
-    fontFamily: "Montserrat",
-  },
   typography: {
     h5: {
       color: "white",
@@ -27,6 +23,7 @@ const theme = createTheme({
       letterSpacing: "0.2em",
       marginBottom: "15px",
       textAlign: "center",
+      textTransform: "uppercase",
     },
     h6: {
       color: "white",
@@ -38,11 +35,8 @@ const theme = createTheme({
       margin: "15px",
     },
     body1: {
-      backgroundColor: "white",
-      display: "flex",
-      fontSize: "18px",
-      alignItems: "center",
-      justifyContent: "space-between",
+      background: "white",
+      fontSize: "16px",
       fontFamily: "Montserrat",
       fontWeight: 500,
     },
@@ -53,7 +47,9 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <div className="content">
-          <Typography variant="h5">website todo</Typography>
+          <Typography className="title" variant="h5">
+            website todo
+          </Typography>
           <Lists />
         </div>
         <Input />

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./input.scss";
+import { useDispatch } from "react-redux";
 import { Add, AddCircleRounded } from "@mui/icons-material";
 import {
   Box,
@@ -9,6 +10,7 @@ import {
   Typography,
   IconButton,
 } from "@mui/material";
+import { addTodo } from "../../redux/features/todoSlice";
 
 const style = {
   position: "absolute",
@@ -22,14 +24,37 @@ const style = {
 };
 
 const Input = () => {
-  //open modal
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const dispatch = useDispatch();
+  //open modal
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
+
+  //handle change
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  //add todo
+  const addTask = () => {
+    if (value.trim() === "") {
+      return;
+    }
+    dispatch(
+      addTodo({
+        title: value,
+        id: Date.now(),
+        isCompleted: false,
+      })
+    );
+    setValue("");
+  };
+
   return (
     <div>
       <Typography
@@ -57,10 +82,20 @@ const Input = () => {
             color="success"
             required
             fullWidth
+            onKeyDown={(e) => {
+              e.key === "Enter" && addTask();
+            }}
+            onChange={handleChange}
+            value={value}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton onClick={() => handleClose()}>
+                  <IconButton
+                    onClick={(e) => {
+                      addTask(e);
+                      handleClose();
+                    }}
+                  >
                     <AddCircleRounded />
                   </IconButton>
                 </InputAdornment>
