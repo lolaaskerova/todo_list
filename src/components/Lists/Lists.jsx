@@ -18,7 +18,7 @@ import {
 const Lists = () => {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todo.todo);
-  console.log(todos);
+
   //delete todo
   const handleDelete = (item) => {
     dispatch(deleteTodo(item));
