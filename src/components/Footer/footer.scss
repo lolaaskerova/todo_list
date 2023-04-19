@@ -1,0 +1,14 @@
+footer {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  span {
+    font-family: "Montserrat";
+    font-size: 14px;
+  }
+  .owner {
+    font-weight: 600;
+    color: #90a17d;
+    cursor: pointer;
+  }
+}
